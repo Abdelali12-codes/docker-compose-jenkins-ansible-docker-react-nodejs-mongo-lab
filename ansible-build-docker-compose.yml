@@ -1,0 +1,18 @@
+- name: run docker compose
+  hosts: dockercompose
+  become: yes
+  become_user: dockercompose
+
+
+  tasks:
+  - name: stop the current docker compose orchestration
+    command: docker-compose down 
+    args:
+      chdir: /home/dockercompose/react-nodejs-mongo-app 
+    ignore_errors: yes
+
+  - name: run the docker compose orchestration
+    command: docker-compose up -d
+    args:
+       chdir: /home/dockercompose/react-nodejs-mongo-app
+  

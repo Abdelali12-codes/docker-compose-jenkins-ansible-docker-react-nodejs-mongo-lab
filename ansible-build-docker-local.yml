@@ -1,0 +1,22 @@
+- name: build docker image and push it to dockr hub
+  hosts: localhost
+  become: yes 
+  become_user: abdelali
+  
+
+  tasks:
+  - name: build image
+    command: docker build -t react-app .
+    args:
+       chdir: /home/abdelali/react-jenkins-app
+
+  - name: tag the image
+    command: docker tag react-app abdelalidocker/react-app:latest
+
+
+  - name: push the built image to dockerhub
+    command: docker push abdelalidocker/react-app:latest
+
+
+  - name: delete the built image and the taged one
+    command: docker rmi react-app abdelalidocker/react-app:latest

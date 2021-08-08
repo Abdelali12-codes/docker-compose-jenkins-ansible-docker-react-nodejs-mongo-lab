@@ -1,0 +1,28 @@
+- name: build docker image and run docker container
+  hosts: remotes
+  become: yes
+  become_user: dockerhost
+
+
+  tasks:
+  - name: stop the running container
+    command: docker stop react-app
+    ignore_errors: yes
+
+  - name: remove the container
+    command: docker rm react-app
+    ignore_errors: yes
+
+  - name: remove the image
+    command: docker rmi abdelalidocker/react-app:latest 
+    ignore_errors: yes
+
+  - name: pull  the image
+    command: docker pull abdelalidocker/react-app:latest
+
+  - name: run the container
+    command: docker run --name react-app -d -p 80:80 abdelalidocker/react-app:latest
+
+
+
+  
