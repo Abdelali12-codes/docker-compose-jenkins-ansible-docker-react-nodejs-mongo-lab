@@ -11,6 +11,11 @@
       chdir: /home/dockercompose/react-nodejs-mongo-app 
     ignore_errors: yes
 
+  - name: build the image
+    command: docker-compose build 
+    args:
+      chdir: /home/dockercompose/react-nodejs-mongo-app
+       
   - name: run the docker compose orchestration
     command: docker-compose up -d
     args:

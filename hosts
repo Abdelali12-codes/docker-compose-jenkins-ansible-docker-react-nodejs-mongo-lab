@@ -1,7 +1,7 @@
 [localhost]
 localhost
 
-[remotes]
+[docker]
 dockerhost@172.31.24.31
 
 [dockercompose]

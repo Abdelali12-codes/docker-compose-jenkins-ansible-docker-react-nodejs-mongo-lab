@@ -1,5 +1,5 @@
 - name: build docker image and run docker container
-  hosts: remotes
+  hosts: docker
   become: yes
   become_user: dockerhost
 
